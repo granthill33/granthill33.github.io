@@ -1,0 +1,1826 @@
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title>Tour de Guangxi</title>
+	<style>
+	  	.submitButtons{
+	  		font-size:large;
+	  		font-weight: bold;
+	  		height:50px;
+	  		width:160px;
+	  	}
+	  	.showButtons{
+	  		font-size:x-small;
+	  		font-weight: bold;
+	  		height:30px;
+	  		width:90px;
+	  	}
+	  	.labels
+	  	{
+	  		font-weight: bold;
+	  	}
+	  	.info
+	  	{
+	  		font-style: italic;
+	  	}
+	  	
+	  	.error
+	  	{
+	  		font-weight: bold;
+	  		color: #FF0000;
+	  	}
+	  	.links
+	  	{
+	  		font-size:x-small;
+	  	}
+	  	.stageNumber
+	  	{
+	  		font-size:small;
+	  		font-weight: bold;
+	  	}
+	  	.message
+	  	{
+	  		font-size:small;
+	  		font-style: italic;
+	  	}
+	  	body{
+	  		font-family: Open Sans;
+	  		font-size: large;
+	  	}
+	  	br{
+	  		line-height:125%;
+	  	}
+	  	textarea
+	  	{
+	  		text-align: center;
+	  		width: 350px;
+	  	}
+	</style>
+</head>
+<body>
+<center>
+<h1>Tour de Guangxi</h1>
+<br>
+<p>Versión 1.0</p>
+<br>
+
+<p class="labels">División: &#160
+<select id="divisions" disabled onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="2000">Primera división</option>
+</select></p>
+<p class="labels">Usuario:&#160
+<input id="user"></input></p>
+<table>
+	<tr>
+		<td align="center" colspan="2"><a class="links" href="https://www.procyclingstats.com/race/tour-of-guangxi/2018/startlist" target="_blank"><img src="https://www.procyclingstats.com/images/logo_small.png" width="49" height="15"> Ver equipos en ProCyclingStats</a></td>
+	</tr>
+	<tr>
+		<td>&#160;</td>
+	</tr>
+	<tr align="center">
+		<td><button class="showButtons" onclick="showProfiles();changeStage(0)">Ver Perfiles</button>
+		<button class="showButtons" onclick="showRidersByPrice()">Ciclistas/Precio</button>
+		<button class="showButtons" onclick="window.open('normas.html')">Normas</button><td>
+	</tr>
+	<tr>
+		<td>
+			<table align="center" id="Profiles">
+				<tr>
+					<td class="message" align="center">(Clicka en la imagen para ver en tamaño completo)</td>
+				</tr>
+				<tr>
+					<td align="center"><select id="stageNumber" class="stageNumber" onChange="changeStage(value)">
+					<option value="0" selected="selected">Selecciona una etapa</option>		
+					<option value="1">E1: Beihai - Beihai 107.4 Km. </option>
+          				<option value="2">E2: Beihai - Qinzhou 145.2 km. </option>
+          				<option value="3">E3: Nanning - Nanning 125.4 Km. </option>
+         				<option value="4">E4: Nanning - Mashan Nongla Scenic Spot 152.2 Km. </option>
+          				<option value="5">E5: Liuzhou - Guilin 212.2 km. </option>
+          				<option value="6">E6: Guilin - Guilin 169 km. </option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><img src="Profiles/Stage1.jpg" id="stages" height="176" width="320" onclick="fullSize()"></td>
+				</tr>
+			</table>
+		</td>
+	<tr>
+	<tr>
+		<td>
+			<table align="center" id="ridersByPriceTR">
+				<tr>
+					<td class="message" align="center">(Solo para visualización, no se incluirá em tu equipo)</td>
+				</tr>
+				<tr>
+				<br>
+				<td align="center"><select>
+				<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+			</tr>
+			</table>
+		</td>
+	<tr>
+		<td class="labels">Presupuesto:&#160&#160</td>
+		<td id="budget">0</td>
+	</tr>
+	<tr>
+		<td class="labels">Presupuesto restante:&#160&#160</td>
+		<td id="remainingBudget">0</td>	
+	</tr>
+	<tr>
+		<td align="center" colspan="2" class="error" id="error"></td>
+	</tr>
+</table>
+<br>
+<table>
+	<tr>
+		<td class="labels">C1 :&#160</td>
+<td><select id="rider1" onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+</tr><tr>
+<td class="labels">C2 :&#160</td>
+<td><select id="rider2" onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+</tr><tr>
+<td class="labels">C3 :&#160</td>
+<td><select id="rider3" onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+</tr><tr>
+<td class="labels">C4 :&#160</td>
+<td><select id="rider4" onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+</tr><tr>
+<td class="labels">C5 :&#160</td>
+<td><select id="rider5" onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+</tr><tr>
+<td class="labels">C6 :&#160</td>
+<td><select id="rider6" onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+</tr><tr>
+<td class="labels">C7 :&#160</td>
+<td><select id="rider7" onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+</tr><tr>
+<td class="labels">C8 :&#160</td>
+<td><select id="rider8" onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+</tr><tr>
+<td class="labels">C9 :&#160</td>
+<td><select id="rider9" onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+</tr><tr>
+<td class="labels">R :&#160</td>
+<td><select id="reserve" onChange="getCredits(); sumPrices(); getRemaining(); printDorsal();">
+<option value="0" selected="selected">Selecciona un corredor</option>
+<option value="375" dorsal="162">Ackermann, Pascal: 375</option>
+<option value="50" dorsal="93">Agnoli, Valerio: 50</option>
+<option value="100" dorsal="570">Anacona, Winner: 100</option>
+<option value="100" dorsal="94">Arashiro, Yukiya: 100</option>
+<option value="75" dorsal="571">Arcas, Jorge: 75</option>
+<option value="150" dorsal="501">Armee, Sander: 150</option>
+<option value="50" dorsal="380">Armirail, Bruno: 50</option>
+<option value="350" dorsal="848">Aru, Fabio: 350</option>
+<option value="225" dorsal="572">Barbero, Carlos: 225</option>
+<option value="75" dorsal="163">Baska, Erik: 75</option>
+<option value="50" dorsal="765">Basso, Leonardo: 50</option>
+<option value="100" dorsal="289">Berhane, Natnael: 100</option>
+<option value="75" dorsal="821">Bernard, Julien: 75</option>
+<option value="200" dorsal="574">Betancur, Carlos: 200</option>
+<option value="100" dorsal="546">Bewley, Sam: 100</option>
+<option value="50" dorsal="697">Biermans, Jenthe: 50</option>
+<option value="75" dorsal="95">Boaro, Manuele: 75</option>
+<option value="50" dorsal="850">Bono, Matteo: 50</option>
+<option value="200" dorsal="822">Brambilla, Gianluca: 200</option>
+<option value="150" dorsal="339">Carthy, Hugh: 150</option>
+<option value="100" dorsal="615">Cavagna, Rémi: 100</option>
+<option value="100" dorsal="66">Chernetski, Sergei: 100</option>
+<option value="75" dorsal="341">Clarke, William: 75</option>
+<option value="50" dorsal="825">Daniel, Gregory: 50</option>
+<option value="75" dorsal="67">De Vreese, Laurens: 75</option>
+<option value="50" dorsal="293">Debesay, Mekseb: 50</option>
+<option value="75" dorsal="383">Delage, Mickael: 75</option>
+<option value="400" dorsal="384">Demare, Arnaud: 400</option>
+<option value="75" dorsal="618">Devenyns, Dries: 75</option>
+<option value="75" dorsal="770">Dibben, Jonathan: 75</option>
+<option value="100" dorsal="10">Dillier, Silvan: 100</option>
+<option value="75" dorsal="294">Dlamini, Nicolas: 75</option>
+<option value="75" dorsal="11">Domont, Axel: 75</option>
+<option value="75" dorsal="295">Dougall, Nick: 75</option>
+<option value="100" dorsal="771">Doull, Owain: 100</option>
+<option value="125" dorsal="700">Dowsett, Alex: 125</option>
+<option value="175" dorsal="52">Dunbar, Edward: 175</option>
+<option value="75" dorsal="14">Duval, Julien: 75</option>
+<option value="100" dorsal="728">Eenkhoorn, Pascal: 100</option>
+<option value="100" dorsal="296">Eisel, Bernhard: 100</option>
+<option value="50" dorsal="100">Feng, Chung Kai: 50</option>
+<option value="100" dorsal="581">Fernandez, Ruben: 100</option>
+<option value="50" dorsal="831">Frame, Alex: 50</option>
+<option value="100" dorsal="800">Geschke, Simon: 100</option>
+<option value="200" dorsal="620">Gilbert, Philippe: 200</option>
+<option value="175" dorsal="702">Gonçalves, José: 175</option>
+<option value="100" dorsal="73">Grivko, Andriy: 100</option>
+<option value="175" dorsal="170">Grobschartner, Felix: 175</option>
+<option value="450" dorsal="730">Groenewegen, Dylan: 450</option>
+<option value="75" dorsal="801">Haga, Chad: 75</option>
+<option value="75" dorsal="704">Haller, Marco: 75</option>
+<option value="75" dorsal="552">Hamilton, Lucas: 75</option>
+<option value="50" dorsal="510">Hansen, Adam: 50</option>
+<option value="50" dorsal="804">Hofstede, Lennard: 50</option>
+<option value="75" dorsal="77">Houle, Hugo: 75</option>
+<option value="250" dorsal="622">Jakobsen, Fabio: 250</option>
+<option value="150" dorsal="301">Janse Van Rensburg, Reinardt: 150</option>
+<option value="75" dorsal="731">Jansen, Amund Grondahl: 75</option>
+<option value="75" dorsal="805">Kämna, Lennard: 75</option>
+<option value="175" dorsal="171">Kennaugh, Peter: 175</option>
+<option value="75" dorsal="558">Kluge, Roger: 75</option>
+<option value="300" dorsal="807">Kragh Andersen, Soren: 300</option>
+<option value="100" dorsal="148">Kung, Stefan: 100</option>
+<option value="200" dorsal="733">Kuss, Sepp: 200</option>
+<option value="125" dorsal="709">Kuznetsov, Viacheslav: 125</option>
+<option value="75" dorsal="391">Le Gac, Olivier: 75</option>
+<option value="50" dorsal="784">Lopez Garcia, David: 50</option>
+<option value="75" dorsal="347">Magnusson, Kim: 75</option>
+<option value="125" dorsal="712">Martin, Tony: 125</option>
+<option value="75" dorsal="627">Martinelli, Davide: 75</option>
+<option value="275" dorsal="349">Mclay, Daniel: 275</option>
+<option value="50" dorsal="517">Mertz, Remy: 50</option>
+<option value="75" dorsal="560">Meyer, Cameron: 75</option>
+<option value="125" dorsal="561">Mezgec, Luka: 125</option>
+<option value="225" dorsal="83">Minali, Riccardo: 225</option>
+<option value="50" dorsal="862">Mirza, Yousef Mohamed: 50</option>
+<option value="325" dorsal="785">Moscon, Gianni: 325</option>
+<option value="75" dorsal="837">Mullen, Ryan: 75</option>
+<option value="75" dorsal="519">Naesen, Lawrence: 75</option>
+<option value="100" dorsal="630">Narvaez, Jhonatan: 100</option>
+<option value="50" dorsal="25">Paret-Peintre, Aurelien: 50</option>
+<option value="150" dorsal="115">Pernsteiner, Hermann: 150</option>
+<option value="150" dorsal="714">Planckaert, Baptiste: 150</option>
+<option value="125" dorsal="866">Polanc, Jan: 125</option>
+<option value="375" dorsal="149">Porte, Richie: 375</option>
+<option value="125" dorsal="739">Powless, Neilson: 125</option>
+<option value="50" dorsal="585">Quintana, Dayer: 50</option>
+<option value="50" dorsal="841">Rast, Gregory: 50</option>
+<option value="100" dorsal="868">Riabushenko, Alexandr: 100</option>
+<option value="150" dorsal="151">Roelandts, Jurgen: 150</option>
+<option value="100" dorsal="741">Roosen, Timo: 100</option>
+<option value="200" dorsal="86">Sanchez, Luis Leon: 200</option>
+<option value="175" dorsal="633">Schachmann, Maximilian: 175</option>
+<option value="75" dorsal="153">Schär, Michael: 75</option>
+<option value="50" dorsal="185">Schillinger, Andreas: 50</option>
+<option value="75" dorsal="186">Schwarzmann, Michael: 75</option>
+<option value="100" dorsal="154">Scotson, Miles: 100</option>
+<option value="75" dorsal="402">Seigle, Romain: 75</option>
+<option value="100" dorsal="187">Selig, Rudiger: 100</option>
+<option value="75" dorsal="403">Sinkeldam, Ramon: 75</option>
+<option value="175" dorsal="790">Sivakov, Pavel: 175</option>
+<option value="200" dorsal="845">Stuyven, Jasper: 200</option>
+<option value="100" dorsal="591">Sutterlin, Jasha: 100</option>
+<option value="200" dorsal="870">Swift, Ben: 200</option>
+<option value="50" dorsal="310">Thompson, Jay Robert: 50</option>
+<option value="325" dorsal="564">Trentin, Matteo: 325</option>
+<option value="50" dorsal="871">Troia, Oliviero: 50</option>
+<option value="100" dorsal="816">Tusveld, Martijn: 100</option>
+<option value="400" dorsal="356">Uran, Rigoberto: 400</option>
+<option value="75" dorsal="1030">Van den Berg, Julius: 75</option>
+<option value="225" dorsal="522">Van der Sande, Tosh: 225</option>
+<option value="50" dorsal="745">Van Hoecke, Gijs: 50</option>
+<option value="125" dorsal="158">Van Hooydonck, Nathan: 125</option>
+<option value="75" dorsal="27">Vandenbergh, Stijn: 75</option>
+<option value="50" dorsal="1029">Vanhoucke, Harm: 50</option>
+<option value="150" dorsal="358">Vanmarcke, Sep: 150</option>
+<option value="225" dorsal="28">Venturini, Clement: 225</option>
+<option value="100" dorsal="566">Verona, Carlos: 100</option>
+<option value="125" dorsal="90">Villella, Davide: 125</option>
+<option value="250" dorsal="119">Visconti, Giovanni: 250</option>
+<option value="275" dorsal="29">Vuillermoz, Alexis: 275</option>
+<option value="350" dorsal="818">Walscheid, Maximilian: 350</option>
+<option value="50" dorsal="120">Wang, Meiyin: 50</option>
+<option value="125" dorsal="526">Wouters, Enzo: 125</option>
+</tr></table>
+<br>
+<p>Listado de dorsales:</p>
+<textarea id="dorsalList" rows="11">
+
+</textarea> 
+<br>
+
+<button class="submitButtons" onclick="sendMail()">Enviar por mail</button>
+<button class="submitButtons" id="copyList">Copiar lista</button>
+<br>
+<br>
+<p class="info">* Enviar por mail: Rellena tu nombre de usuario en el Foro y selecciona los 10 corredores. Tras ello, haz clic en el botón en tu móvil o PC con cliente de correo predefinido (si tienes) y rellenará automáticamente el mail que debes mandar. Revisa la selección y envía el correo.
+<br>
+<br>
+* Copiar lista: Copiará tu selección al portapapeles.</p>
+<br>
+
+
+<script>
+	$("button" + "#copyList").click(function(){
+    $("textarea").select();
+    document.execCommand('copy');
+});
+	getCredits();
+	sumPrices();
+	getRemaining();
+	var totalPrice = 0;
+	var credits = 0;
+	var remaining = 0;
+	var repeated = false;
+	var budgetError = "Atención: Te has pasado de presupuesto."
+	var repeatedError = "Atención: Ciclistas repetidos.";
+	var userError = "Introduce tu usuario del foro ACB.";
+	var divError = "Selecciona una división.";
+	var state = 0;
+	document.getElementById('Profiles').style.display = "none";
+	var state2 = 0;
+	document.getElementById('ridersByPriceTR').style.display = "none";
+	function getCredits()
+	{
+		credits = document.getElementById('divisions').value;
+		document.getElementById('budget').innerHTML = credits;
+	}
+	function getRemaining() 
+	{
+		remaining = credits - totalPrice;
+		document.getElementById('remainingBudget').innerHTML = remaining;
+		if(remaining < 0)
+		{
+			document.getElementById('error').innerHTML = budgetError;
+		}
+		else
+		{
+			if(document.getElementById('error').innerHTML == budgetError)
+			{
+				document.getElementById('error').innerHTML = "";
+			}
+		}
+	}
+	function sumPrices(){
+			
+	totalPrice = 0;
+	arrayDorsal = [];
+	arrayCyclists = [];
+		var price1 = parseInt(document.getElementById('rider1').value);
+		var price2 = parseInt(document.getElementById('rider2').value);
+		var price3 = parseInt(document.getElementById('rider3').value);
+		var price4 = parseInt(document.getElementById('rider4').value);
+		var price5 = parseInt(document.getElementById('rider5').value);
+		var price6 = parseInt(document.getElementById('rider6').value);
+		var price7 = parseInt(document.getElementById('rider7').value);
+		var price8 = parseInt(document.getElementById('rider8').value);
+		var price9 = parseInt(document.getElementById('rider9').value);
+		totalPrice +=  price1 + price2 + price3 + price4 + price5 + price6 + price7 + price8 + price9; 
+		var rider1Dorsal = document.getElementById('rider1').options[document.getElementById('rider1').selectedIndex].getAttribute('dorsal');
+		var rider2Dorsal = document.getElementById('rider2').options[document.getElementById('rider2').selectedIndex].getAttribute('dorsal');
+		var rider3Dorsal = document.getElementById('rider3').options[document.getElementById('rider3').selectedIndex].getAttribute('dorsal');
+		var rider4Dorsal = document.getElementById('rider4').options[document.getElementById('rider4').selectedIndex].getAttribute('dorsal');
+		var rider5Dorsal = document.getElementById('rider5').options[document.getElementById('rider5').selectedIndex].getAttribute('dorsal');
+		var rider6Dorsal = document.getElementById('rider6').options[document.getElementById('rider6').selectedIndex].getAttribute('dorsal');
+		var rider7Dorsal = document.getElementById('rider7').options[document.getElementById('rider7').selectedIndex].getAttribute('dorsal');
+		var rider8Dorsal = document.getElementById('rider8').options[document.getElementById('rider8').selectedIndex].getAttribute('dorsal');
+		var rider9Dorsal = document.getElementById('rider9').options[document.getElementById('rider9').selectedIndex].getAttribute('dorsal');
+		var reserveDorsal = document.getElementById('reserve').options[document.getElementById('reserve').selectedIndex].getAttribute('dorsal');
+		var rider1Name = document.getElementById('rider1').options[document.getElementById('rider1').selectedIndex].text;
+		var rider2Name = document.getElementById('rider2').options[document.getElementById('rider2').selectedIndex].text;
+		var rider3Name = document.getElementById('rider3').options[document.getElementById('rider3').selectedIndex].text;
+		var rider4Name = document.getElementById('rider4').options[document.getElementById('rider4').selectedIndex].text;
+		var rider5Name = document.getElementById('rider5').options[document.getElementById('rider5').selectedIndex].text;
+		var rider6Name = document.getElementById('rider6').options[document.getElementById('rider6').selectedIndex].text;
+		var rider7Name = document.getElementById('rider7').options[document.getElementById('rider7').selectedIndex].text;
+		var rider8Name = document.getElementById('rider8').options[document.getElementById('rider8').selectedIndex].text;
+		var rider9Name = document.getElementById('rider9').options[document.getElementById('rider9').selectedIndex].text;
+		var reserveName = document.getElementById('reserve').options[document.getElementById('reserve').selectedIndex].text;
+		if(rider1Dorsal)
+		{
+			arrayDorsal.push(rider1Dorsal);
+			arrayCyclists.push(rider1Name);
+		}
+		if(rider2Dorsal)
+		{
+			arrayDorsal.push(rider2Dorsal);
+			arrayCyclists.push(rider2Name);
+		}
+		if(rider3Dorsal)
+		{
+			arrayDorsal.push(rider3Dorsal);
+			arrayCyclists.push(rider3Name);
+		}
+		if(rider4Dorsal)
+		{
+			arrayDorsal.push(rider4Dorsal);
+			arrayCyclists.push(rider4Name);
+		}
+		if(rider5Dorsal)
+		{
+			arrayDorsal.push(rider5Dorsal);
+			arrayCyclists.push(rider5Name);
+		}
+		if(rider6Dorsal)
+		{
+			arrayDorsal.push(rider6Dorsal);
+			arrayCyclists.push(rider6Name);
+		}
+		if(rider7Dorsal)
+		{
+			arrayDorsal.push(rider7Dorsal);
+			arrayCyclists.push(rider7Name);
+		}
+		if(rider8Dorsal)
+		{
+			arrayDorsal.push(rider8Dorsal);
+			arrayCyclists.push(rider8Name);
+		}
+		if(rider9Dorsal)
+		{
+			arrayDorsal.push(rider9Dorsal);
+			arrayCyclists.push(rider9Name);
+			
+			
+		}
+		if(reserveDorsal)
+		{
+			arrayDorsal.push(reserveDorsal);
+			arrayCyclists.push(reserveName);
+		}
+		if(arrayDorsal)
+		{
+		
+			var arrayDorsalSorted = arrayDorsal.slice();
+			arrayDorsalSorted.sort(function(a, b){return b-a});
+			for (i=0; i < arrayDorsalSorted.length - 1; i++)
+			{
+				if (arrayDorsalSorted[i] == arrayDorsalSorted[i+1])
+				{
+					document.getElementById('error').innerHTML = repeatedError;
+					repeated = true;
+					break;
+				}
+				else
+				{
+					repeated = false;
+					if(document.getElementById('error').innerHTML == repeatedError)
+					{
+						document.getElementById('error').innerHTML = "";
+					}
+				}
+			}
+		}
+	}
+	function printDorsal(){
+		document.getElementById('dorsalList').innerHTML = "Tour de Guangxi" + "\n\n" + arrayDorsal.join("\n") + "\n\n" + arrayCyclists.join("\n");
+	}
+	function sendMail()
+	{
+		var divisionC = checkDivision();
+		var userC = checkUser();
+		var budgetC = checkBudget();
+		var ridersC = checkRiders();
+		var repeatedC = checkRepeated();
+		if(divisionC == false || userC == false || budgetC == false || ridersC == false || repeatedC == false )
+		{
+			return;
+		}
+		else
+		{
+			var body = "Tour de Guangxi" + "%0A%0A" + arrayDorsal.join("%0A") + "%0A%0A" + arrayCyclists.join("%0A");
+	    	var subject = document.getElementById('user').value;
+	    	var email = "grandesminivueltas@gmail.com";
+	    	window.location.href = 'mailto:'+email+'?subject=Tour_de_Guangxi%20-%20Equipo%20Usuario:%20'+subject+'&body='+body;
+		}
+    }
+    function checkDivision()
+    {
+    	if(credits < 1500)
+    	{
+    		alert(divError);
+    		return false;
+    	}
+    }
+    function checkUser()
+    {
+    	if(user.value == "")
+    	{
+    		alert(userError);
+    		return false;
+    	}
+    }
+    function checkBudget()
+    {
+ 
+    	if(remaining < 0)
+    	{	
+    		alert(budgetError);
+    		return false;
+    	}
+    }
+    function checkRiders()
+    {
+    	var price1 = parseInt(document.getElementById('rider1').value);
+		var price2 = parseInt(document.getElementById('rider2').value);
+		var price3 = parseInt(document.getElementById('rider3').value);
+		var price4 = parseInt(document.getElementById('rider4').value);
+		var price5 = parseInt(document.getElementById('rider5').value);
+		var price6 = parseInt(document.getElementById('rider6').value);
+		var price7 = parseInt(document.getElementById('rider7').value);
+		var price8 = parseInt(document.getElementById('rider8').value);
+		var price9 = parseInt(document.getElementById('rider9').value);
+    	if( price1 == 0 || price2 == 0 || price3 == 0 || price4 == 0 || price5 == 0 || price6 == 0 || price7 == 0 || price8 == 0 || price9 == 0 )
+    	{
+    		alert("Lista de corredores incompleta.");
+    		return false;
+    	}
+    }
+    function checkRepeated()
+    {
+    	if(repeated == true)
+    	{
+    		alert(repeatedError);
+    		return false;
+    	}
+    }
+    function showProfiles()
+    {
+    	if(state == 0)
+    	{
+    		document.getElementById('Profiles').style.display = "";
+    		state = 1;
+    	}
+    	else
+    	{
+    		document.getElementById('Profiles').style.display = "none";
+    		state = 0;
+    	}
+    }
+    function changeStage(stageValue)
+    {
+    	var profilePic = "Profiles/Stage" + (parseInt(document.getElementById('stageNumber').value)) + ".jpg";
+		document.getElementById('stages').src = profilePic;
+    }
+    function fullSize()
+    {
+		var image = document.getElementById('stages').src;
+    	window.open(image, 'Perfil de etapa', "menubar=1,resizable=1,width=960,height=541");
+    }
+    function showRidersByPrice()
+    {
+    	if(state2 == 0)
+    	{
+    		document.getElementById('ridersByPriceTR').style.display = "";
+    		state2 = 1;
+    	}
+    	else
+    	{
+    		document.getElementById('ridersByPriceTR').style.display = "none";
+    		state2 = 0;
+    	}
+    }
+</script> 
+</center>
+</body>
+</html>
